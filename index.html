@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Traductor LSC</title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+	<section class="header-background">
+		<div class="nav-bar">
+			<ul>
+				<li><a href="">Ayuda</a></li>
+				<li><a href="">Nosotros</a></li>
+			</ul>
+		</div>
+		<h1 class="titulo">Traductor LSC</h1>
+		<h2 class="subtitulo">Sitio Web diseñado para traducir el abecedario del <br>
+		Lenguaje de Señas Colombiano (LSC) a texto</h2>
+	</section>
+	<div class="grid-container">
+		<div class="itemFlecha">
+			<img src="Flecha.png" class="img-flecha">
+			<p class="text-camara">Activa la <br> cámara</p>
+		</div>
+		<div class="itemBoton-empezar">
+			<img src="Boton.png" class="boton-empezar">
+			<p class="text-normal">Empezar</p>
+		</div>
+		<div class="video-container" class="itemVideo">
+			<video autoplay="true" class="video-element"></video>
+		</div>
+		<div class="itemEspacio">
+			<img src="Espacio.png" class="img-espacio">
+			<p class="text-normal">Espacio</p>
+		</div>
+		<div class="itemParar">
+			<img src="Parar.png" class="img-espacio">
+			<p class="text-normal">Parar</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var video = document.querySelector(".video-element");
+
+		if (navigator.mediaDevices.getUserMedia) {
+		  navigator.mediaDevices.getUserMedia({ video: true })
+		    .then(function (stream) {
+		      video.srcObject = stream;
+		    })
+		    .catch(function (err0r) {
+		      console.log("Something went wrong!");
+		    });
+		}
+
+		function stop(e) {
+		  var stream = video.srcObject;
+		  var tracks = stream.getTracks();
+
+		  for (var i = 0; i < tracks.length; i++) {
+		    var track = tracks[i];
+		    track.stop();
+		  }
+
+		  video.srcObject = null;
+		}
+	</script>
+	<button onclick="stop()">STOP</button>
+	<div class="text-container">
+		<input type="text" class="text-area" placeholder="Hola..." readonly>
+	</div>
+</body>
+<footer>
+	<div class="footer grid-container-footer">
+		<div style="grid-column: 1 / 2; place-self: center;">
+			<img src="insor.png" width="220px">
+		</div>
+		<div style="grid-column: 2 / 3; place-self: center;">
+			<img src="img_gov.png" width="70px">
+		</div>
+		<div style="grid-column: 3 / 4; place-self: center;">
+			<p class="text-footer"><b>Integrantes</b> <br>
+				Brayan Montoya <br>
+				Edward Pinzón <br>
+				Oscar Rodríguez <br> 
+			</p>
+		</div>
+		<div style="grid-column: 4 / 5; place-self: center;">
+			<img src="Telephone_icon.png" width="50px">
+		</div>
+		<div style="grid-column: 5 / 6; place-self: center;">
+			<p class="text-footer"><br>
+				3233997134 <br>
+				3224687474 <br>
+				3103210287 <br> 
+			</p>
+		</div>
+		<div style="grid-column: 6 / 7; place-self: center;">
+			<img src="Home_icon.png" width="40px">
+		</div>
+		<div style="grid-column: 7 / 8; place-self: center;">
+			<p class="text-footer" style="font-size: 20px;">Km1 Via acacias, Anillo Vial</p>
+			<p class="text-footer" style="font-size: 15px;">Barrio León XIII - Villavicencio</p>
+		</div>
+		<div style="grid-column: 8 / 9; place-self: center;">
+			<img src="aunar_logo.jpeg" width="130px">
+		</div>
+	</div>
+	</div>
+	</div>
+</footer>
+</html>
